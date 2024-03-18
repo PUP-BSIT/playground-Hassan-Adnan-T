@@ -27,14 +27,14 @@ class TodoList {
         }
     }
 
-    listTodo():void{
+    listTodo(): void{
         console.log("Todos:");
         this.todos.forEach(todo =>{
             console.log(`ID: ${todo.id}, Task: ${todo.task}, Completed ${todo.completed}`)
         });
     }
 
-    deleteTodo(id: number):void{
+    deleteTodo(id: number): void{
         const index = this.todos.findIndex(todo => todo.id === id);
         if (index != -1){
             this.todos.splice(index, 1);

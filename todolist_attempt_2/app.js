@@ -1,3 +1,14 @@
+"use strict";
+document.querySelector('#additem').addEventListener("click", function () {
+    var input = document.querySelector("#add");
+    addTodo(input.value);
+});
+function addTodo(input1) {
+    var listElement = document.querySelector("#list");
+    var newTodoItem = document.createElement("li");
+    newTodoItem.textContent = input1;
+    listElement.appendChild(newTodoItem);
+}
 var TodoList = /** @class */ (function () {
     function TodoList() {
         this.todos = [];
@@ -8,6 +19,14 @@ var TodoList = /** @class */ (function () {
             task: task,
             iscomplete: false
         };
+        document.querySelector('#additem').addEventListener("click", function () {
+            var input = document.querySelector("#add");
+            addTodo(input.value);
+        });
+        var listElement = document.querySelector("#list");
+        var newTodoItem = document.createElement("li");
+        newTodoItem.textContent = task;
+        listElement.appendChild(newTodoItem);
         this.todos.push(newTodo);
     };
     TodoList.prototype.deleteTodo = function (id) {
@@ -37,9 +56,3 @@ var TodoList = /** @class */ (function () {
     };
     return TodoList;
 }());
-var Todo = new TodoList();
-Todo.addTodo("Make a todo list 3 times");
-Todo.addTodo("Sleep");
-Todo.addTodo("Jump");
-Todo.completedTodo(3);
-Todo.listTodo();
