@@ -11,24 +11,24 @@ interface Require {
     status: Status;
 }
 
-interface Text extends Require {
+interface myText extends Require {
     type: "text";
     content: string;
 }
 
-interface Image extends Require {
+interface myImage extends Require {
     type: "image";
     imageUrl: string;
     caption: string;
 }
 
-interface Video extends Require {
+interface myVideo extends Require {
     type: "video";
     videoUrl: string;
     duration: number;
 }
 
-type Message = Text | Image | Video;
+type Message = myText | myImage | myVideo;
 
 type Sender = "Alice" | "Bob" | "Charlie";
 type Recipient = "Alice" | "Bob" | "Charlie";
@@ -45,7 +45,7 @@ function readMessage(msg: Message): void {
     msg.status = Status.READ;
 }
 
-const textMessage: Text = {
+const textMessage: myText = {
     type: "text",
     sender: "Bob",
     recipient: "Alice",
@@ -54,12 +54,14 @@ const textMessage: Text = {
     status : Status.SENT
 };
 
-const videoMessage: Video = {
+const videoMessage: myVideo = {
     type: "video",
     sender: "Alice",
     recipient: "Bob",
+    timestamp: Date.now(),
     videoUrl: "https://www.youtube.com/watch?v=3bhkYoMWTFE",
     duration: 18,
+    status : Status.SENT
 };
 
 console.log(textMessage.content);
