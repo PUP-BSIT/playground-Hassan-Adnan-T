@@ -40,3 +40,5 @@ addButton.addEventListener('click', () =>{
         itemTaskInput.value = '';
     }
 });
+
+readList();
