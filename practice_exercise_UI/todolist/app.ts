@@ -24,6 +24,13 @@ function readList():void{
                 li.style.textDecoration = 'line-through'
             }
         })
+
+        const deleteButton = document.createElement("button") as HTMLButtonElement;
+        deleteButton.textContent = "Delete";
+        deleteButton.addEventListener('click', () => {
+            
+        })
+
         li.append(completeButton);
         itemlist.append(li);
     })
