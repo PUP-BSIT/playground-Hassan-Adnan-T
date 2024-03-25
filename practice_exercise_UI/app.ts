@@ -13,6 +13,18 @@ function readList():void{
     todos.forEach((todo) => {
         const li = document.createElement("li") as HTMLElement;
         li.textContent = todo.task;
+
+        const completeButton = document.createElement("button") as HTMLButtonElement;
+        completeButton.textContent = "Complete";
+        completeButton.addEventListener('click', () => {
+            if(li.style.textDecoration === 'line-through'){
+                li.style.textDecoration = 'none';
+            }
+            else{
+                li.style.textDecoration = 'line-through'
+            }
+        })
+        li.append(completeButton);
         itemlist.append(li);
     })
 

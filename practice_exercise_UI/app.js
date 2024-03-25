@@ -5,6 +5,17 @@ function readList() {
     todos.forEach(function (todo) {
         var li = document.createElement("li");
         li.textContent = todo.task;
+        var completeButton = document.createElement("button");
+        completeButton.textContent = "Complete";
+        completeButton.addEventListener('click', function () {
+            if (li.style.textDecoration === 'line-through') {
+                li.style.textDecoration = 'none';
+            }
+            else {
+                li.style.textDecoration = 'line-through';
+            }
+        });
+        li.append(completeButton);
         itemlist.append(li);
     });
 }
@@ -26,3 +37,4 @@ addButton.addEventListener('click', function () {
         itemTaskInput.value = '';
     }
 });
+readList();
