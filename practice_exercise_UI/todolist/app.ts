@@ -4,7 +4,8 @@ interface Todo {
     iscomplete: boolean;
 }
 
-const todos : Todo[] = [];
+let todos : Todo[] = [];
+let todoIdCounter : number = 1;
 
 function readList():void{
     const itemlist = document.querySelector("#item_list") as HTMLElement;
@@ -31,9 +32,10 @@ function readList():void{
         const deleteButton = document.createElement("button") as HTMLButtonElement;
         deleteButton.textContent = "Delete";
         deleteButton.addEventListener('click', () => {
-            
+            li.remove();
         })
 
+        li.append(deleteButton);
         li.append(completeButton);
         itemlist.append(li);
     })
@@ -43,12 +45,17 @@ function readList():void{
 
 function createTodo(task:string): void{
     const newTask : Todo = {
-        id : todos.length + 1,
+        id : todoIdCounter++,
         task : task,
         iscomplete : false,
     }
     
     todos.push(newTask);
+    readList();
+}
+
+function deleteTodo(id:number): void {
+    todos = todos.filter(todo => todo.id !== id);
     readList();
 }
 
