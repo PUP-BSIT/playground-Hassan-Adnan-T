@@ -19,10 +19,13 @@ function readList():void{
         completeButton.addEventListener('click', () => {
             if(li.style.textDecoration === 'line-through'){
                 li.style.textDecoration = 'none';
+                this.iscomplete = false;
             }
             else{
                 li.style.textDecoration = 'line-through'
+                this.iscomplete = true;
             }
+            
         })
 
         const deleteButton = document.createElement("button") as HTMLButtonElement;

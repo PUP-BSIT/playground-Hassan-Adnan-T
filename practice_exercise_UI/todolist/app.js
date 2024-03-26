@@ -1,5 +1,6 @@
 var todos = [];
 function readList() {
+    var _this = this;
     var itemlist = document.querySelector("#item_list");
     itemlist.innerHTML = "";
     todos.forEach(function (todo) {
@@ -10,10 +11,18 @@ function readList() {
         completeButton.addEventListener('click', function () {
             if (li.style.textDecoration === 'line-through') {
                 li.style.textDecoration = 'none';
+                _this.iscomplete = false;
+                console.log(_this.iscomplete);
             }
             else {
                 li.style.textDecoration = 'line-through';
+                _this.iscomplete = true;
+                console.log(_this.iscomplete);
             }
+        });
+        var deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.addEventListener('click', function () {
         });
         li.append(completeButton);
         itemlist.append(li);
